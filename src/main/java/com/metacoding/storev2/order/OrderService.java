@@ -20,7 +20,7 @@ public class OrderService {
     }
 
     @Transactional
-    public void 상품주문(int storeId, int qty) {
+    public void 상품주문(int storeId, int qty, int userId) {
         // 1. 상품 조회
         Store product = storeRepository.findDetailByID(storeId);
         // 1-1. 상품의 남은 재고가 qty보다 작을 경우 break
@@ -29,7 +29,6 @@ public class OrderService {
         int remainStock = product.getStock() - qty;
         int totalPrice = product.getPrice() * qty;
         // 3. 구매
-        int userId = 1; // 세션 id 받아올 것
         orderRepository.updateStock(storeId, remainStock);
         orderRepository.saveOrder(storeId, userId, qty, totalPrice);
 
