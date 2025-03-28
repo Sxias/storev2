@@ -29,8 +29,10 @@ public class StoreController {
     }
 
     @GetMapping("/store/{id}/detail")
-    public String detail(@PathVariable int id) {
+    public String detail(@PathVariable int id, HttpServletRequest request) {
         // TODO : 상품 id 받아와서 상세 정보 받아와서 model(request)에 담고 보내기
+        Store detail = storeService.상세보기(id);
+        request.setAttribute("model", detail);
         return "store/detail";
     }
 
@@ -47,10 +49,24 @@ public class StoreController {
     }
 
     @GetMapping("/store/{id}/update-form")
-    public String updateForm(@PathVariable int id) {
+    public String updateForm(@PathVariable int id, HttpServletRequest request) {
         // TODO : 상품 id 받아와서 상세 정보 받아와서 model(request)에 담고 보내기
+        Store updateDTO = storeService.상품수정화면(id);
+        request.setAttribute("model", updateDTO);
         return "store/update-form";
     }
 
     // TODO : update
+    @PostMapping("/store/{id}/update")
+    public String update(StoreRequest.SaveDTO saveDTO, @PathVariable int id) {
+        storeService.상품수정(id, saveDTO.getName(), saveDTO.getStock(), saveDTO.getPrice());
+        return "redirect:/store/"+id+"/detail";
+    }
+
+    // TODO : delete
+    @PostMapping("/store/{id}/delete")
+    public String delete(@PathVariable int id) {
+        storeService.상품삭제(id);
+        return "redirect:/store/list";
+    }
 }
