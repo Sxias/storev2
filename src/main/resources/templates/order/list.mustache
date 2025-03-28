@@ -15,19 +15,15 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>1</td>
-                <td>바나나</td>
-                <td>5개</td>
-                <td>15000원</td>
-            </tr>
+            {{#models}}
+                <tr>
+                    <td>{{id}}</td>
+                    <td>{{name}}</td>
+                    <td>{{qty}}개</td>
+                    <td>{{totalPrice}}원</td>
+                </tr>
+            {{/models}}
 
-            <tr>
-                <td>2</td>
-                <td>바나나</td>
-                <td>5개</td>
-                <td>15000원</td>
-            </tr>
             </tbody>
         </table>
     </div>
