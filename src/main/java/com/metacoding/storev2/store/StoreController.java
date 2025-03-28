@@ -1,9 +1,13 @@
 package com.metacoding.storev2.store;
 
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @Controller
@@ -17,8 +21,10 @@ public class StoreController {
     }
 
     @GetMapping("/store/list")
-    public String list() {
+    public String list(HttpServletRequest request) {
         // TODO : 전체 상품 리스트 받아와서 model(request)에 담고 보내기
+        List<Store> storeList = storeService.전체상품보기();
+        request.setAttribute("models", storeList);
         return "store/list";
     }
 
@@ -34,6 +40,11 @@ public class StoreController {
     }
 
     // TODO : save
+    @PostMapping("/store/save")
+    public String save(StoreRequest.SaveDTO saveDTO) {
+        storeService.상품추가(saveDTO.getName(), saveDTO.getStock(), saveDTO.getPrice());
+        return "redirect:/store/list";
+    }
 
     @GetMapping("/store/{id}/update-form")
     public String updateForm(@PathVariable int id) {

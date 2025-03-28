@@ -10,17 +10,13 @@
     </tr>
     </thead>
     <tbody>
-
+    {{#models}}
     <tr>
-      <td>1</td>
-      <td>바나나</td>
+      <td>{{id}}</td>
+      <td>{{name}}</td>
       <td><a href="/store/{id}/detail">상세보기</a></td>
     </tr>
-    <tr>
-      <td>2</td>
-      <td>딸기</td>
-      <td><a href="/store/{id}/detail">상세보기</a></td>
-    </tr>
+    {{/models}}
 
     </tbody>
   </table>
