@@ -23,4 +23,6 @@ public class UserController {
     // TODO : join
 
     // TODO : login
+
+    // TODO : logout
 }

@@ -10,14 +10,14 @@
     </div>
 
     <div class="mt-3 mb-3">
-        <a href="#" class="btn btn-outline-primary">수정</a>
-        <form action="#" method="POST" class="d-inline">
+        <a href="/store/{id}/update-form" class="btn btn-outline-primary">수정</a>
+        <form action="/store/delete" method="POST" class="d-inline">
             <button type="submit" class="btn btn-outline-primary">삭제</button>
         </form>
     </div>
 
     <div class="mt-4 p-5 bg-light text-dark rounded-4">
-        <form action="#">
+        <form action="/order/save">
             <input type="hidden" value="1">
             <input type="text" placeholder="개수를 입력하세요">
             <button type="submit" class="btn btn-outline-primary">구매</button>

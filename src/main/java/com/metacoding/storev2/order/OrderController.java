@@ -13,6 +13,7 @@ public class OrderController {
 
     @GetMapping("/order/list")
     public String orderList() {
+        // TODO : 주문 내역 id 역순으로 받아서 model(request)에 담아서 보내기
         return "order/list";
     }
 
